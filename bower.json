@@ -1,0 +1,33 @@
+{
+  "name": "react-mdl",
+  "version": "0.0.1",
+  "authors": [
+    "Brandon Buck <lordizuriel@gmail.com>"
+  ],
+  "description": "MDL Classes for React.",
+  "main": "",
+  "keywords": [
+    "react-js",
+    "mdl",
+    "material-design",
+    "material-design-lite"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bbuck/react-mdl",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "test.html",
+    "test_server.go"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "material-design-lite": "~1.0.2"
+  },
+  "devDependencies": {
+    "system.js": "~0.18.8"
+  }
+}

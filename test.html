@@ -1,0 +1,26 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>React MDL Test Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/material-design-lite/material.min.css" rel="stylesheet">
+    <style>
+      body {
+        padding: 50px;
+        overflow-x: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-main"></div>
+  </body>
+  <script src="/js/material-design-lite/material.min.js"></script>
+  <script src="/js/system.js/dist/system.js"></script>
+  <script>
+    System.config({
+      baseURL: "/js"
+    });
+
+    System.import("react-mdl.test.js");
+  </script>
+</html>

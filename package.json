@@ -1,0 +1,24 @@
+{
+  "name": "react-mdl",
+  "version": "0.0.1",
+  "private": true,
+  "description": "MDL Classes for React",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbuck/react-mdl.git"
+  },
+  "author": "Brandon Buck <lordizuriel@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bbuck/react-mdl/issues"
+  },
+  "homepage": "https://github.com/bbuck/react-mdl#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-filter": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}
