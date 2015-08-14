@@ -9,7 +9,11 @@ setInterval(function() {
   }
 }, 1000);
 
-class BaseMDLComponent extends React.Component {
+// ***************************************************************************
+// Base Components
+// ***************************************************************************
+
+class BaseComponent extends React.Component {
   getExcludedProperties() {
     return ["children"];
   }
@@ -44,7 +48,7 @@ class BaseMDLComponent extends React.Component {
   }
 }
 
-export class MDLComponent extends BaseMDLComponent {
+export class Component extends BaseComponent {
   getExcludedProperties() {
     return ["badge"];
   }
@@ -65,8 +69,279 @@ export class MDLComponent extends BaseMDLComponent {
   }
 }
 
-// MDL Grid component
-export class MDLGrid extends BaseMDLComponent {
+export class Icon extends Component {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("material-icons");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <i {...properties}>{this.props.children}</i>
+    );
+  }
+}
+
+// ***************************************************************************
+// Layout Components
+// ***************************************************************************
+
+export class Layout extends BaseComponent {
+  getExcludedProperties() {
+    let excluded = ["fixedDrawer", "fixedHeader", "fixedTabs"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className = properties.className.concat(["mdl-layout", "mdl-js-layout", "mdl-layout--overlay-drawer-button"]);
+
+    if (this.props.fixedDrawer) {
+      properties.className.push("mdl-layout--fixed-drawer");
+    }
+
+    if (this.props.fixedHeader) {
+      properties.className.push("mdl-layout--fixed-header");
+    }
+
+    if (this.props.fixedTabs) {
+      properties.className.push("mdl-layout--fixed-tabs");
+    }
+
+    return properties;
+  }
+}
+
+export class LayoutHeader extends BaseComponent {
+  getExcludedProperties() {
+    let excluded = ["scroll", "waterfall", "transparent"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__header");
+
+    if (this.props.scroll) {
+      properties.className.push("mdl-layout__header--scroll");
+    }
+
+    if (this.props.waterfall) {
+      properties.className.push("mdl-layout__header--waterfall");
+    }
+
+    if (this.props.transparent) {
+      properties.className.push("mdl-layout__header--transparent");
+    }
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <header {...properties}>
+        {this.props.children}
+      </header>
+    );
+  }
+}
+
+export class LayoutHeaderRow extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__header-row");
+
+    return properties;
+  }
+}
+
+export class LayoutTitle extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout-title");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <span {...properties}>
+        {this.props.children}
+      </span>
+    );
+  }
+}
+
+export class Navigation extends BaseComponent {
+  getExcludedProperties() {
+    let excluded = ["largeScreenOnly"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-navigation");
+
+    if (this.props.largeScreenOnly) {
+      properties.className.push("mdl-layout--large-screen-only");
+    }
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <nav {...properties}>
+        {this.props.children}
+      </nav>
+    );
+  }
+}
+
+export class NavigationLink extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-navigation__link");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <a {...properties}>
+        {this.props.children}
+      </a>
+    );
+  }
+}
+
+export class LayoutTabBar extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__tab-bar");
+
+    return properties;
+  }
+}
+
+export class LayoutTab extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["active"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__tab");
+
+    if (this.props.active) {
+      properties.className.push("is-active");
+    }
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <a {...properties}>
+        {this.props.children}
+      </a>
+    );
+  }
+}
+
+export class LayoutTabPanel extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__tab-panel");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <section {...properties}>
+        {this.props.children}
+      </section>
+    );
+  }
+}
+
+export class LayoutDrawer extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__drawer");
+
+    return properties;
+  }
+}
+
+export class LayoutContent extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout__content");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <main {...properties}>
+        {this.props.children}
+      </main>
+    );
+  }
+}
+
+export class LayoutIcon extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout-icon");
+
+    return properties;
+  }
+}
+
+export class LayoutSpacer extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-layout-spacer");
+
+    return properties;
+  }
+}
+
+export class Grid extends BaseComponent {
   getExcludedProperties() {
     let excluded = super.getExcludedProperties();
 
@@ -75,7 +350,6 @@ export class MDLGrid extends BaseMDLComponent {
 
   getElementProperties() {
     let properties = super.getElementProperties();
-
     properties.className.push("mdl-grid");
 
     if (this.props.noSpacing) {
@@ -86,11 +360,11 @@ export class MDLGrid extends BaseMDLComponent {
   }
 }
 
-export class MDLCell extends BaseMDLComponent {
+export class Cell extends BaseComponent {
   getExcludedProperties() {
     let excluded = super.getExcludedProperties();
 
-    return excluded.concat(Object.keys(MDLCell.ClassMapping));
+    return excluded.concat(Object.keys(Cell.ClassMapping));
   }
 
   getElementProperties() {
@@ -99,8 +373,8 @@ export class MDLCell extends BaseMDLComponent {
 
     properties.className.push("mdl-cell");
 
-    for (key in MDLCell.ClassMapping) {
-      value = MDLCell.ClassMapping[key];
+    for (key in Cell.ClassMapping) {
+      value = Cell.ClassMapping[key];
 
       if (this.props[key]) {
         if (typeof value === "function") {
@@ -115,7 +389,7 @@ export class MDLCell extends BaseMDLComponent {
   }
 }
 
-MDLCell.ClassMapping = {
+Cell.ClassMapping = {
   "hideDesktop": "mdl-cell--hide-desktop",
   "hideTablet": "mdl-cell--hide-tablet",
   "hidePhone": "mdl-cell--hide-phone",
@@ -129,7 +403,11 @@ MDLCell.ClassMapping = {
   "phoneCols": n => `mdl-cell--${n}-col-phone`
 };
 
-export class MDLButton extends MDLComponent {
+// ***************************************************************************
+// Usability/Control Components
+// ***************************************************************************
+
+export class Button extends Component {
   getExcludedProperties() {
     let excluded = super.getExcludedProperties();
 
@@ -171,13 +449,6 @@ export class MDLButton extends MDLComponent {
     return properties;
   }
 
-  componentDidMount() {
-    let domNode = React.findDOMNode(this);
-
-
-    // componentHandler.upgradeElement(domNode.querySelector("button"));
-  }
-
   render() {
     let properties = this.getElementProperties();
     properties.className = properties.className.join(" ");
@@ -187,5 +458,150 @@ export class MDLButton extends MDLComponent {
         {this.props.children}
       </button>
     );
+  }
+}
+
+export class LinkButton extends Button {
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <a {...properties}>
+        {this.props.children}
+      </a>
+    );
+  }
+}
+
+// ***************************************************************************
+// Card Components
+// ***************************************************************************
+
+export class Card extends Component {
+  getExcludedProperties() {
+    let excluded = super.getExcludedProperties();
+
+    return excluded.concat(["shadow"])
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card");
+
+    if (this.props.shadow) {
+      properties.className.push(`mdl-shadow--${this.props.shadow}dp`);
+    }
+
+    return properties;
+  }
+}
+
+class CardComponent extends BaseComponent {
+  getExcludedProperties() {
+    let excluded = super.getExcludedProperties();
+
+    return excluded.concat(["border", "expand"]);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+
+    ["border", "expand"].forEach(name => {
+      if (this.props[name]) {
+        properties.className.push(`mdl-card--${name}`);
+      }
+    })
+
+    return properties;
+  }
+}
+
+export class CardTitle extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__title");
+
+    return properties;
+  }
+}
+
+export class CardTitleText extends CardComponent {
+  getExcludedProperties() {
+    let excluded = super.getExcludedProperties();
+
+    return excluded.concat(["h"]);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__title-text");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    switch (this.props.h) {
+      case "6":
+        return <h6 {...properties}>{this.props.children}</h6>;
+      case "5":
+        return <h5 {...properties}>{this.props.children}</h5>;
+      case "4":
+        return <h4 {...properties}>{this.props.children}</h4>;
+      case "3":
+        return <h3 {...properties}>{this.props.children}</h3>;
+      case "2":
+        return <h2 {...properties}>{this.props.children}</h2>;
+      default:
+        return <h1 {...properties}>{this.props.children}</h1>;
+    }
+  }
+}
+
+export class CardSubtitleText extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__subtitle-text");
+
+    return properties;
+  }
+}
+
+export class CardMedia extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__media");
+
+    return properties;
+  }
+}
+
+export class CardSupportingText extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__supporting-text");
+
+    return properties;
+  }
+}
+
+export class CardActions extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__actions");
+
+    return properties;
+  }
+}
+
+export class CardMenu extends CardComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-card__menu");
+
+    return properties;
   }
 }

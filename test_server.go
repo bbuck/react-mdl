@@ -39,8 +39,6 @@ func (f FileSystem) Open(name string) (http.File, error) {
 	return nil, os.ErrNotExist
 }
 
-var htmlTemplates = template.Must(template.ParseFiles("test.html"))
-
 func main() {
 	http.Handle("/js/", http.FileServer(FileSystem{"/js/", []string{"dist", "bower_components"}}))
 	http.Handle("/css/", http.FileServer(FileSystem{"/css/", []string{"bower_components"}}))
@@ -49,5 +47,5 @@ func main() {
 }
 
 func loadTestHTML(w http.ResponseWriter, r *http.Request) {
-	htmlTemplates.ExecuteTemplate(w, "test.html", nil)
+	template.Must(template.ParseFiles("test.html")).ExecuteTemplate(w, "test.html", nil)
 }
