@@ -275,9 +275,19 @@ export class LayoutTab extends BaseComponent {
 }
 
 export class LayoutTabPanel extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["active"];
+
+    return super.getExcludedProperties().concat(exclude);
+  }
+
   getElementProperties() {
     let properties = super.getElementProperties();
     properties.className.push("mdl-layout__tab-panel");
+
+    if (this.props.active) {
+      properties.className.push("is-active");
+    }
 
     return properties;
   }
@@ -411,7 +421,7 @@ export class Button extends Component {
   getExcludedProperties() {
     let excluded = super.getExcludedProperties();
 
-    return excluded.concat(["raised", "fab", "miniFab", "icon", "colored", "primary", "accent", "applyRipple"]);
+    return excluded.concat(["raised", "fab", "miniFab", "icon", "colored", "primary", "accent", "ripple"]);
   }
 
   getElementProperties() {
@@ -442,7 +452,7 @@ export class Button extends Component {
       }
     });
 
-    if (this.props.applyRipple) {
+    if (this.props.ripple) {
       properties.className.push("mdl-js-ripple-effect");
     }
 
@@ -470,6 +480,19 @@ export class LinkButton extends Button {
       <a {...properties}>
         {this.props.children}
       </a>
+    );
+  }
+}
+
+export class LabelButton extends Button {
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <label {...properties}>
+        {this.props.children}
+      </label>
     );
   }
 }
@@ -603,5 +626,301 @@ export class CardMenu extends CardComponent {
     properties.className.push("mdl-card__menu");
 
     return properties;
+  }
+}
+
+// ***************************************************************************
+// Tabs
+// ***************************************************************************
+
+export class Tabs extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["ripple"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className = properties.className.concat(["mdl-tabs", "mdl-js-tabs"]);
+
+    if (this.props.ripple) {
+      properties.className.push("mdl-js-ripple-effect");
+    }
+
+    return properties;
+  }
+}
+
+export class TabBar extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-tabs__tab-bar");
+
+    return properties;
+  }
+}
+
+export class Tab extends Component {
+  getExcludedProperties() {
+    const excluded = ["active"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-tabs__tab");
+
+    if (this.props.active) {
+      properties.className.push("is-active");
+    }
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <a {...properties}>
+        {this.props.children}
+      </a>
+    );
+  }
+}
+
+export class TabPanel extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["active"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-tabs__panel");
+
+    if (this.props.active) {
+      properties.className.push("is-active");
+    }
+
+    return properties;
+  }
+}
+
+// ***************************************************************************
+// Mega Footer
+// ***************************************************************************
+
+export class MegaFooter extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mega-footer");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <footer {...properties}>
+        {this.props.children}
+      </footer>
+    );
+  }
+}
+
+export class MegaFooterSection extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["top", "middle", "bottom", "left", "right", "dropDown"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties(),
+        section;
+
+    switch (true) {
+      case this.props.middle:
+        section = "middle";
+        break;
+      case this.props.bottom:
+        section = "bottom";
+        break;
+      case this.props.left:
+        section = "left";
+        break;
+      case this.props.right:
+        section = "right";
+        break;
+      case this.props.dropDown:
+        section = "drop-down";
+        break;
+      default:
+        section = "top";
+        break;
+    }
+    properties.className.push(`mdl-mega-footer__${section}-section`);
+
+    return properties;
+  }
+}
+
+export class MegaFooterHeading extends Component {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mega-footer__heading");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <h1 {...properties}>
+        {this.props.children}
+      </h1>
+    );
+  }
+}
+
+export class MegaFooterSocialButton extends Component {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mega-footer__social-button");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <button {...properties}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
+
+export class MegaFooterLinkList extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mega-footer__link-list");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <ul {...properties}>
+        {this.props.children}
+      </ul>
+    );
+  }
+}
+
+export class Logo extends Component {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-logo");
+
+    return properties;
+  }
+}
+
+export class MiniFooter extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mini-footer");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <footer {...properties}>
+        {this.props.children}
+      </footer>
+    );
+  }
+}
+
+export class MiniFooterSection extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["left", "right"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties(),
+        section;
+
+    switch (true) {
+      case this.props.right:
+        section = "right";
+        break;
+      default:
+        section = "left";
+        break;
+    }
+    properties.className.push(`mdl-mini-footer__${section}-section`);
+
+    return properties;
+  }
+}
+
+export class MiniFooterLinkList extends BaseComponent {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mini-footer__link-list");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <ul {...properties}>
+        {this.props.children}
+      </ul>
+    );
+  }
+}
+
+export class MiniFooterSocialButton extends Component {
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className.push("mdl-mini-footer__social-button");
+
+    return properties;
+  }
+
+  render() {
+    let properties = this.getElementProperties();
+    properties.className = properties.className.join(" ");
+
+    return (
+      <button {...properties}>
+        {this.props.children}
+      </button>
+    );
   }
 }
