@@ -45,10 +45,24 @@ import {
   CardMedia,
   CardSupportingText,
   CardActions,
-  CardMenu
+  CardMenu,
+
+  ProgressBar,
+  Spinner
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
+  componentDidMount() {
+    document.querySelector("#prog1").addEventListener("mdl-componentupgraded", function() {
+      this.MaterialProgress.setProgress(44);
+    });
+
+    document.querySelector("#prog3").addEventListener("mdl-componentupgraded", function() {
+      this.MaterialProgress.setProgress(33);
+      this.MaterialProgress.setBuffer(57);
+    })
+  }
+
   render() {
     return (
       <Layout fixedHeader>
@@ -343,6 +357,24 @@ class TestComponent extends React.Component {
                   </ul>
                 </TabPanel>
               </Tabs>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4">
+              <ProgressBar id="prog1" />
+            </Cell>
+            <Cell cols="4">
+              <ProgressBar id="prog2" indeterminate />
+            </Cell>
+            <Cell cols="4">
+              <ProgressBar id="prog3" />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="4">
+              <Spinner active />
+              <Spinner singleColor active />
             </Cell>
           </Grid>
           <MiniFooter>

@@ -711,7 +711,7 @@ export class TabPanel extends BaseComponent {
 }
 
 // ***************************************************************************
-// Mega Footer
+// Footers
 // ***************************************************************************
 
 export class MegaFooter extends BaseComponent {
@@ -922,5 +922,51 @@ export class MiniFooterSocialButton extends Component {
         {this.props.children}
       </button>
     );
+  }
+}
+
+// ***************************************************************************
+// Progress
+// ***************************************************************************
+
+export class ProgressBar extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["indeterminate"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className = properties.className.concat(["mdl-progress", "mdl-js-progress"]);
+
+    if (this.props.indeterminate) {
+      properties.className.push("mdl-progress__indeterminate");
+    }
+
+    return properties;
+  }
+}
+
+export class Spinner extends BaseComponent {
+  getExcludedProperties() {
+    const excluded = ["singleColor", "active"];
+
+    return super.getExcludedProperties().concat(excluded);
+  }
+
+  getElementProperties() {
+    let properties = super.getElementProperties();
+    properties.className = properties.className.concat(["mdl-spinner", "mdl-js-spinner"]);
+
+    if (this.props.active) {
+      properties.className.push("is-active");
+    }
+
+    if (this.props.singleColor) {
+      properties.className.push("mdl-spinner--single-color");
+    }
+
+    return properties;
   }
 }

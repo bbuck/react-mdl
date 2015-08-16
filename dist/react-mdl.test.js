@@ -1,7 +1,7 @@
 System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_export) {
   "use strict";
 
-  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, TestComponent;
+  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, TestComponent;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -56,6 +56,8 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
       CardSupportingText = _reactMdlReactMdlMinJs.CardSupportingText;
       CardActions = _reactMdlReactMdlMinJs.CardActions;
       CardMenu = _reactMdlReactMdlMinJs.CardMenu;
+      ProgressBar = _reactMdlReactMdlMinJs.ProgressBar;
+      Spinner = _reactMdlReactMdlMinJs.Spinner;
     }],
     execute: function () {
       TestComponent = (function (_React$Component) {
@@ -68,6 +70,18 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
         }
 
         _createClass(TestComponent, [{
+          key: "componentDidMount",
+          value: function componentDidMount() {
+            document.querySelector("#prog1").addEventListener("mdl-componentupgraded", function () {
+              this.MaterialProgress.setProgress(44);
+            });
+
+            document.querySelector("#prog3").addEventListener("mdl-componentupgraded", function () {
+              this.MaterialProgress.setProgress(33);
+              this.MaterialProgress.setBuffer(57);
+            });
+          }
+        }, {
           key: "render",
           value: function render() {
             return React.createElement(
@@ -832,6 +846,36 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                         )
                       )
                     )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(
+                    Cell,
+                    { cols: "4" },
+                    React.createElement(ProgressBar, { id: "prog1" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "4" },
+                    React.createElement(ProgressBar, { id: "prog2", indeterminate: true })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "4" },
+                    React.createElement(ProgressBar, { id: "prog3" })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "4" },
+                    React.createElement(Spinner, { active: true }),
+                    React.createElement(Spinner, { singleColor: true, active: true })
                   )
                 ),
                 React.createElement(
