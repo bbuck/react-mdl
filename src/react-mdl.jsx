@@ -3,11 +3,13 @@ import React from "react/react.js";
 const componentHandlerDefined = window.componentHandler && window.componentHandler && typeof window.componentHandler.upgradeElement === "function",
       componentHandler = window.componentHandler;
 
-setInterval(function() {
+function upgradeMaterialComponents() {
   if (componentHandlerDefined) {
     componentHandler.upgradeDom();
   }
-}, 1000);
+}
+
+setInterval(upgradeMaterialComponents, 1000);
 
 // ***************************************************************************
 // Base Components
@@ -969,6 +971,146 @@ export class Slider extends BaseComponent {
 
   render() {
     return <input {...this.getRenderProperties()} />;
+  }
+}
+
+// ***************************************************************************
+// Toggle
+// ***************************************************************************
+
+export class Checkbox extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["id", "ripple", "label", "checked", "onChange", "defaultChecked"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-checkbox", "mdl-js-checkbox");
+
+    if (this.props.ripple) {
+      props.className.push("mdl-js-ripple-effect");
+    }
+
+    return props;
+  }
+
+  render() {
+    let inputProps = {
+      onChange: this.props.onChange
+    };
+    if (this.props.checked || this.props.defaultChecked) {
+      inputProps.defaultChecked = true;
+    }
+
+    return (
+      <label htmlFor={this.props.id} {...this.getRenderProperties()}>
+        <input type="checkbox" id={this.props.id} className="mdl-checkbox__input" {...inputProps} />
+        <span className="mdl-checkbox__label">{this.props.label}</span>
+      </label>
+    );
+  }
+}
+
+export class Radio extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["label", "ripple", "id", "name", "onChange", "checked", "defaultChecked"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-radio", "mdl-js-radio");
+
+    if (this.props.ripple) {
+      props.className.push("mdl-js-ripple-effect");
+    }
+
+    return props;
+  }
+
+  render() {
+    let inputProps = {
+      id: this.props.id,
+      name: this.props.name,
+      value: this.props.value,
+      onChange: this.props.onChange
+    };
+    if (this.props.checked || this.props.defaultChecked) {
+      inputProps.defaultChecked = true;
+    }
+
+    return (
+      <label htmlFor={this.props.id} {...this.getRenderProperties()}>
+        <input className="mdl-radio__button" type="radio" {...inputProps} />
+        <span className="mdl-radio__label">{this.props.label}</span>
+      </label>
+    );
+  }
+}
+
+export class IconToggle extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["id", "ripple", "onChange", "checked", "defaultChecked"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-icon-toggle", "mdl-js-icon-toggle");
+
+    if (this.props.ripple) {
+      props.className.push("mdl-js-ripple-effect");
+    }
+
+    return props;
+  }
+
+  render() {
+    let inputProps = {
+      onChange: this.props.onChange,
+      id: this.props.id
+    };
+    if (this.props.checked || this.props.defaultChecked) {
+      inputProps.defaultChecked = true;
+    }
+
+    return (
+      <label htmlFor={this.props.id} {...this.getRenderProperties()}>
+        <input className="mdl-icon-toggle__input" type="checkbox" {...inputProps} />
+        <Icon className="mdl-icon-toggle__label">{this.props.children}</Icon>
+      </label>
+    );
+  }
+}
+
+export class Switch extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["id", "checked", "defaltChecked", "label", "ripple", "onChange"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-switch", "mdl-js-switch");
+
+    if (this.props.ripple) {
+      props.className.push("mdl-js-ripple-effect");
+    }
+
+    return props;
+  }
+
+  render() {
+    let inputProps = {
+      id: this.props.id
+    };
+    if (this.props.checked || this.props.defaultChecked) {
+      inputProps.defaultChecked = true;
+    }
+
+    return (
+      <label htmlFor={this.props.id} {...this.getRenderProperties()}>
+        <input className="mdl-switch__input" type="checkbox" {...inputProps} />
+        <span className="mdl-switch__label">{this.props.label}</span>
+      </label>
+    );
   }
 }
 

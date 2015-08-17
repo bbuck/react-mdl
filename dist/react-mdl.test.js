@@ -1,7 +1,7 @@
 System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_export) {
   "use strict";
 
-  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, TestComponent;
+  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, Checkbox, Radio, IconToggle, Switch, TestComponent;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -62,6 +62,10 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
       Menu = _reactMdlReactMdlMinJs.Menu;
       MenuItem = _reactMdlReactMdlMinJs.MenuItem;
       Slider = _reactMdlReactMdlMinJs.Slider;
+      Checkbox = _reactMdlReactMdlMinJs.Checkbox;
+      Radio = _reactMdlReactMdlMinJs.Radio;
+      IconToggle = _reactMdlReactMdlMinJs.IconToggle;
+      Switch = _reactMdlReactMdlMinJs.Switch;
     }],
     execute: function () {
       TestComponent = (function (_React$Component) {
@@ -127,6 +131,39 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                       null,
                       "About Us"
                     )
+                  )
+                )
+              ),
+              React.createElement(
+                LayoutDrawer,
+                null,
+                React.createElement(
+                  LayoutTitle,
+                  null,
+                  "Drawer"
+                ),
+                React.createElement(
+                  Navigation,
+                  null,
+                  React.createElement(
+                    NavigationLink,
+                    { href: "#" },
+                    "First"
+                  ),
+                  React.createElement(
+                    NavigationLink,
+                    { href: "#" },
+                    "Second"
+                  ),
+                  React.createElement(
+                    NavigationLink,
+                    { href: "#" },
+                    "Third"
+                  ),
+                  React.createElement(
+                    NavigationLink,
+                    { href: "#" },
+                    "Fourth"
                   )
                 )
               ),
@@ -920,6 +957,122 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                     Cell,
                     { cols: "2" },
                     React.createElement(Slider, { min: "0", max: "100", defaultValue: "20", onChange: this.sliderChange })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Checkbox, { label: "Checked", checked: true })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Checkbox, { label: "Unchecked" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Checkbox, { label: "Checked", checked: true, ripple: true })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Checkbox, { label: "Unchecked", ripple: true })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Radio, { label: "Checked", checked: true, name: "radio", value: "1" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Radio, { label: "Unchecked", name: "radio", value: "2" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Radio, { label: "Checked", ripple: true, name: "radio", value: "3" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Radio, { label: "Unchecked", ripple: true, name: "radio", value: "4" })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      IconToggle,
+                      { checked: true },
+                      "format_bold"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      IconToggle,
+                      null,
+                      "format_italic"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      IconToggle,
+                      { checked: true, ripple: true },
+                      "format_underline"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      IconToggle,
+                      { ripple: true },
+                      "mood"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Switch, { label: "On", checked: true })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Switch, { label: "Off" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Switch, { label: "On", checked: true, ripple: true })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(Switch, { label: "Off", ripple: true })
                   )
                 ),
                 React.createElement(

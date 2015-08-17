@@ -53,7 +53,13 @@ import {
   MenuButton,
   Menu,
   MenuItem,
-  Slider
+
+  Slider,
+
+  Checkbox,
+  Radio,
+  IconToggle,
+  Switch
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
@@ -87,6 +93,15 @@ class TestComponent extends React.Component {
             </Menu>
           </LayoutHeaderRow>
         </LayoutHeader>
+        <LayoutDrawer>
+          <LayoutTitle>Drawer</LayoutTitle>
+          <Navigation>
+            <NavigationLink href="#">First</NavigationLink>
+            <NavigationLink href="#">Second</NavigationLink>
+            <NavigationLink href="#">Third</NavigationLink>
+            <NavigationLink href="#">Fourth</NavigationLink>
+          </Navigation>
+        </LayoutDrawer>
         <LayoutContent>
           <Grid>
             <Cell cols="12">
@@ -399,6 +414,66 @@ class TestComponent extends React.Component {
             </Cell>
             <Cell cols="2">
               <Slider min="0" max="100" defaultValue="20" onChange={this.sliderChange} />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <Checkbox label="Checked" checked />
+            </Cell>
+            <Cell cols="1">
+              <Checkbox label="Unchecked" />
+            </Cell>
+            <Cell cols="1">
+              <Checkbox label="Checked" checked ripple />
+            </Cell>
+            <Cell cols="1">
+              <Checkbox label="Unchecked" ripple />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <Radio label="Checked" checked name="radio" value="1" />
+            </Cell>
+            <Cell cols="1">
+              <Radio label="Unchecked" name="radio" value="2" />
+            </Cell>
+            <Cell cols="1">
+              <Radio label="Checked" ripple name="radio" value="3" />
+            </Cell>
+            <Cell cols="1">
+              <Radio label="Unchecked" ripple name="radio" value="4" />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <IconToggle checked>format_bold</IconToggle>
+            </Cell>
+            <Cell cols="1">
+              <IconToggle>format_italic</IconToggle>
+            </Cell>
+            <Cell cols="1">
+              <IconToggle checked ripple>format_underline</IconToggle>
+            </Cell>
+            <Cell cols="1">
+              <IconToggle ripple>mood</IconToggle>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <Switch label="On" checked />
+            </Cell>
+            <Cell cols="1">
+              <Switch label="Off" />
+            </Cell>
+            <Cell cols="1">
+              <Switch label="On" checked ripple />
+            </Cell>
+            <Cell cols="1">
+              <Switch label="Off" ripple />
             </Cell>
           </Grid>
           <MiniFooter>
