@@ -48,7 +48,12 @@ import {
   CardMenu,
 
   ProgressBar,
-  Spinner
+  Spinner,
+
+  MenuButton,
+  Menu,
+  MenuItem,
+  Slider
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
@@ -63,6 +68,10 @@ class TestComponent extends React.Component {
     })
   }
 
+  sliderChange(e) {
+    console.log(e.target.value);
+  }
+
   render() {
     return (
       <Layout fixedHeader>
@@ -70,6 +79,12 @@ class TestComponent extends React.Component {
           <LayoutHeaderRow>
             <LayoutTitle>React MDL</LayoutTitle>
             <LayoutSpacer />
+            <MenuButton id="global-menu" />
+            <Menu htmlFor="global-menu" bottomRight>
+              <MenuItem>Sign In</MenuItem>
+              <MenuItem>Sign Up</MenuItem>
+              <MenuItem>About Us</MenuItem>
+            </Menu>
           </LayoutHeaderRow>
         </LayoutHeader>
         <LayoutContent>
@@ -375,6 +390,15 @@ class TestComponent extends React.Component {
             <Cell cols="4">
               <Spinner active />
               <Spinner singleColor active />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="2">
+              <Slider min="0" max="100" onChange={this.sliderChange} />
+            </Cell>
+            <Cell cols="2">
+              <Slider min="0" max="100" defaultValue="20" onChange={this.sliderChange} />
             </Cell>
           </Grid>
           <MiniFooter>

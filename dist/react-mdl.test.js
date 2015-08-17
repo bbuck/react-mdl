@@ -1,7 +1,7 @@
 System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_export) {
   "use strict";
 
-  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, TestComponent;
+  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, TestComponent;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -58,6 +58,10 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
       CardMenu = _reactMdlReactMdlMinJs.CardMenu;
       ProgressBar = _reactMdlReactMdlMinJs.ProgressBar;
       Spinner = _reactMdlReactMdlMinJs.Spinner;
+      MenuButton = _reactMdlReactMdlMinJs.MenuButton;
+      Menu = _reactMdlReactMdlMinJs.Menu;
+      MenuItem = _reactMdlReactMdlMinJs.MenuItem;
+      Slider = _reactMdlReactMdlMinJs.Slider;
     }],
     execute: function () {
       TestComponent = (function (_React$Component) {
@@ -82,6 +86,11 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
             });
           }
         }, {
+          key: "sliderChange",
+          value: function sliderChange(e) {
+            console.log(e.target.value);
+          }
+        }, {
           key: "render",
           value: function render() {
             return React.createElement(
@@ -98,7 +107,27 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                     null,
                     "React MDL"
                   ),
-                  React.createElement(LayoutSpacer, null)
+                  React.createElement(LayoutSpacer, null),
+                  React.createElement(MenuButton, { id: "global-menu" }),
+                  React.createElement(
+                    Menu,
+                    { htmlFor: "global-menu", bottomRight: true },
+                    React.createElement(
+                      MenuItem,
+                      null,
+                      "Sign In"
+                    ),
+                    React.createElement(
+                      MenuItem,
+                      null,
+                      "Sign Up"
+                    ),
+                    React.createElement(
+                      MenuItem,
+                      null,
+                      "About Us"
+                    )
+                  )
                 )
               ),
               React.createElement(
@@ -876,6 +905,21 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                     { cols: "4" },
                     React.createElement(Spinner, { active: true }),
                     React.createElement(Spinner, { singleColor: true, active: true })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "2" },
+                    React.createElement(Slider, { min: "0", max: "100", onChange: this.sliderChange })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "2" },
+                    React.createElement(Slider, { min: "0", max: "100", defaultValue: "20", onChange: this.sliderChange })
                   )
                 ),
                 React.createElement(
