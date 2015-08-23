@@ -1,7 +1,7 @@
 # React MDL
 
-React MDL is a wrapper for Facebook's [React.js](http://facebook.github.io/react/)
-around Google's great [material-design-lite](http://www.getmdl.io/) library.
+React MDL is a wrapper for Google's great [material-design-lite](http://www.getmdl.io/)
+library making it usable from Facebook's [React.js](http://facebook.github.io/react/).
 The goal is to make it much easier to integrate MDL into a React based client
 application - avoiding the sometime numerous classes for achievement
 (`mdl-button mdl-js-button`).
@@ -10,25 +10,29 @@ application - avoiding the sometime numerous classes for achievement
 
 ### Base Component
 
-The core of React MDL is the `MDLComponet` which represents a basic element with
+The core of React MDL is the `Componet` which represents a basic element with
 MDL features. To create a badge, you can simply specify:
 
 ```jsx
-<MDLComponent badge={10} icon="acocunt_box" />
+<Component badge={10}>
+  <Icon>account_box</Icon>
+</Component>
 ```
 
 Which will result in:
 
 ```html
-<div class="material-icons mdl-badge" data-badge="10">account_box</div>
+<div class="mdl-badge" data-badge="10">
+  <i class="material-icons">account_box</i>
+</div>
 ```
 
 ### Responsive Grid
 
-To create a "Grid" row, simply use the `MDLGrid` class.
+To create a "Grid" row, simply use the `Grid` class.
 
 ```jsx
-<MDLGrid />
+<Grid />
 ```
 
 ```html
@@ -38,11 +42,11 @@ To create a "Grid" row, simply use the `MDLGrid` class.
 Cells are placed inside grids to leverage the space. Cells consume column spacing.
 
 ```jsx
-<MDLGrid>
-  <MDLCell cols="4">
+<Grid>
+  <Cell cols="4">
     Hello, World!
-  </MDLCell>
-</MDLGrid>
+  </Cell>
+</Grid>
 ```
 
 ```html
@@ -55,22 +59,22 @@ Cells are placed inside grids to leverage the space. Cells consume column spacin
 
 ### Buttons
 
-Buttons a represented by the `MDLButton` component which provides easy ways of
+Buttons a represented by the `Button` component which provides easy ways of
 speicfying specific MDL button styles. The basic usage of a button:
 
 ```jsx
-<MDLButton>Button</MDLButton>
+<Button>Button</Button>
 ```
 
 ```html
 <button class="mdl-button mdl-js-button">Button</button>
 ```
 
-Ripple effects can be added to a button type with the simple `applyRipple`
+Ripple effects can be added to a button type with the simple `ripple`
 boolean attribute.
 
 ```jsx
-<MDLButton applyRipple>Ripples</MDLButton>
+<Button ripple>Ripples</Button>
 ```
 
 ```html
@@ -82,9 +86,9 @@ any special classes, and appear as basic with hover effects. Then there is the
 the `fab` button type which is a circle:
 
 ```jsx
-<MDLButton fab>
-  <MDLIcon icon="add" />
-</MDLButton>
+<Button fab>
+  <Icon>add</Icon>
+</Button>
 ```
 
 ```html
@@ -98,7 +102,7 @@ same way as the `fab`. Next there is the `raised` button type which makes
 normal MDL buttons appear (without hover) with a shadow to pop from the background.
 
 ```jsx
-<MDLButton raised>Raised</MDLButton>
+<Button raised>Raised</Button>
 ```
 
 ```html
@@ -108,9 +112,9 @@ normal MDL buttons appear (without hover) with a shadow to pop from the backgrou
 The final button type is for icon only buttons.
 
 ```jsx
-<MDLButton icon>
-  <MDLIcon icon="mood" />
-</MDLButton>
+<Button icon>
+  <Icon>mood</Icon>
+</Button>
 ```
 
 ```html
@@ -124,3 +128,5 @@ There are few additional classes for coloring buttons in specific ways. The
 button type. The `primary` attribute will apply the primary theme color overriding
 the `colored` attribute (some buttons, like `fab`s are colored by the accent color
 by default). Then there is `accent` to force the accent color on the button.
+
+[Work in progress...]
