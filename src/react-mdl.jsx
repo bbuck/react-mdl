@@ -1,5 +1,16 @@
 import React from "react/react.js";
 
+const EventNames = [
+  "onCopy", "onCut", "onPaste", "DOMDataTransfer", "clipboardData", "onKeyDown",
+  "onKeyPress", "onKeyUp", "onFocus", "onBlur", "DOMEventTarget", "relatedTarget",
+  "onChange", "onInput", "onSubmit", "onClick", "onContextMenu", "onDoubleClick",
+  "onDrag", "onDragEnd", "onDragEnter", "onDragExit", "onDragLeave", "onDragOver",
+  "onDragStart", "onDrop", "onMouseDown", "onMouseEnter", "onMouseLeave",
+  "onMouseMove", "onMouseOut", "onMouseOver", "onMouseUp", "onTouchCancel",
+  "onTouchEnd", "onTouchMove", "onTouchStart", "onScroll", "onWheel", "onLoad",
+  "onError"
+];
+
 const componentHandlerDefined = window.componentHandler && window.componentHandler && typeof window.componentHandler.upgradeElement === "function",
       componentHandler = window.componentHandler;
 
@@ -95,6 +106,25 @@ export class Icon extends Component {
     return (
       <i {...this.getRenderProperties()}>{this.props.children}</i>
     );
+  }
+}
+
+class BaseInputWrapper extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(EventNames.concat(["disabled"]));
+  }
+
+  getInputProperties(additional) {
+    const find = EventNames.concat(additional || []).concat(["disabled"]);
+    let inputProps = {};
+
+    find.forEach(key => {
+      if (this.props[key]) {
+        inputProps[key] = this.props[key];
+      }
+    });
+
+    return inputProps;
   }
 }
 
@@ -986,9 +1016,9 @@ export class Slider extends BaseComponent {
 // Toggle
 // ***************************************************************************
 
-export class Checkbox extends Component {
+export class Checkbox extends BaseInputWrapper {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "name", "ripple", "label", "checked", "onChange", "defaultChecked"]);
+    return super.getExcludedProperties().concat(["id", "name", "ripple", "label", "checked", "defaultChecked"]);
   }
 
   getElementProperties() {
@@ -1003,26 +1033,23 @@ export class Checkbox extends Component {
   }
 
   render() {
-    let inputProps = {
-      onChange: this.props.onChange,
-      name: this.props.name
-    };
+    let inputProps = this.getInputProperties(["name", "id"]);
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
     }
 
     return (
       <label htmlFor={this.props.id} {...this.getRenderProperties()}>
-        <input type="checkbox" id={this.props.id} className="mdl-checkbox__input" {...inputProps} />
+        <input type="checkbox" className="mdl-checkbox__input" {...inputProps} />
         <span className="mdl-checkbox__label">{this.props.label}</span>
       </label>
     );
   }
 }
 
-export class Radio extends Component {
+export class Radio extends BaseInputWrapper {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["label", "ripple", "id", "name", "onChange", "checked", "defaultChecked"]);
+    return super.getExcludedProperties().concat(["label", "ripple", "id", "name", "checked", "defaultChecked"]);
   }
 
   getElementProperties() {
@@ -1037,12 +1064,7 @@ export class Radio extends Component {
   }
 
   render() {
-    let inputProps = {
-      id: this.props.id,
-      name: this.props.name,
-      value: this.props.value,
-      onChange: this.props.onChange
-    };
+    let inputProps = this.getInputProperties(["id", "name", "value"]);
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
     }
@@ -1056,9 +1078,9 @@ export class Radio extends Component {
   }
 }
 
-export class IconToggle extends Component {
+export class IconToggle extends BaseInputWrapper {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "name", "ripple", "onChange", "checked", "defaultChecked"]);
+    return super.getExcludedProperties().concat(["id", "name", "ripple", "checked", "defaultChecked"]);
   }
 
   getElementProperties() {
@@ -1073,11 +1095,7 @@ export class IconToggle extends Component {
   }
 
   render() {
-    let inputProps = {
-      onChange: this.props.onChange,
-      id: this.props.id,
-      name: this.props.name
-    };
+    let inputProps = this.getInputProperties(["id", "name"]);
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
     }
@@ -1091,9 +1109,9 @@ export class IconToggle extends Component {
   }
 }
 
-export class Switch extends Component {
+export class Switch extends BaseInputWrapper {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "name", "checked", "defaltChecked", "label", "ripple", "onChange"]);
+    return super.getExcludedProperties().concat(["id", "name", "checked", "defaltChecked", "label", "ripple"]);
   }
 
   getElementProperties() {
@@ -1108,10 +1126,7 @@ export class Switch extends Component {
   }
 
   render() {
-    let inputProps = {
-      id: this.props.id,
-      name: this.props.name
-    };
+    let inputProps = this.getInputProperties(["id", "name"]);
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
     }
@@ -1192,26 +1207,101 @@ export class TD extends TH {
 // Text Fields
 // ***************************************************************************
 
-export class TextField extends BaseComponent {
+export class TextField extends BaseInputWrapper {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "name"]);
+    return super.getExcludedProperties().concat(["id", "name", "value", "label", "pattern", "error", "floatingLabel"]);
   }
 
   getElementProperties() {
     let props = super.getElementProperties();
     props.className.push("mdl-textfield", "mdl-js-textfield");
 
+    if (this.props.floatingLabel) {
+      props.className.push("mdl-textfield--floating-label");
+    }
+
     return props;
+  }
+
+  render() {
+    let inputProps = this.getInputProperties(["value", "id", "name", "pattern"]),
+        error = this.props.error ? (<span className="mdl-textfield__error">{this.props.error}</span>) : null;
+
+    return (
+      <div {...this.getRenderProperties()}>
+        <input type="text" className="mdl-textfield__input" {...inputProps} />
+        <label htmlFor={this.props.id} className="mdl-textfield__label">{this.props.label}</label>
+        {error}
+      </div>
+    );
+  }
+}
+
+export class ExpandingTextField extends TextField {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["icon"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-textfield--expandable");
+
+    return props;
+  }
+
+  render() {
+    let inputProps = this.getInputProperties(["value", "id", "name", "pattern"]);
+
+    return (
+      <div {...this.getRenderProperties()}>
+        <LabelButton icon htmlFor={this.props.id}>
+          <Icon>{this.props.icon}</Icon>
+        </LabelButton>
+        <div className="mdl-textfield__expandable-holder">
+          <input type="text" className="mdl-textfield__input" {...inputProps} />
+          <label htmlFor={this.props.id} className="mdl-textfield__label">{this.props.label}</label>
+        </div>
+      </div>
+    );
+  }
+}
+
+export class TextArea extends TextField {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["rows", "cols"]);
+  }
+
+  render() {
+    let inputProps = this.getInputProperties(["id", "name", "rows", "cols"]),
+        error = this.props.error ? (<span className="mdl-textfield__error">{this.props.error}</span>) : null;
+
+    return (
+      <div {...this.getRenderProperties()}>
+        <textarea className="mdl-textfield__input" {...inputProps}>{this.props.children}</textarea>
+        <label htmlFor={this.props.id} className="mdl-textfield__label">{this.props.label}</label>
+        {error}
+      </div>
+    );
   }
 }
 
 // ***************************************************************************
-// Tables
+// Tooltip
 // ***************************************************************************
 
-  // getElementProperties() {
-  //   let props = super.getElementProperties();
-  //   props.className.push("");
-  //
-  //   return props;
-  // }
+export class Tooltip extends BaseComponent {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["large"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-tooltip");
+
+    if (this.props.large) {
+      props.className.push("mdl-tooltip--large");
+    }
+
+    return props;
+  }
+}

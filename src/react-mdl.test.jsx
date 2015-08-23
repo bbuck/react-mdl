@@ -63,7 +63,13 @@ import {
 
   Table,
   TH,
-  TD
+  TD,
+
+  TextField,
+  ExpandingTextField,
+  TextArea,
+
+  Tooltip
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
@@ -548,6 +554,42 @@ class TestComponent extends React.Component {
                   </tr>
                 </tbody>
               </Table>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <TextField id="username" label="User" pattern="[A-Z,a-z, ]*" error="Letters and spaces only"/>
+            </Cell>
+            <Cell cols="1">
+              <TextArea id="address" rows="1" label="Full address" />
+            </Cell>
+            <Cell cols="1">
+              <ExpandingTextField id="search" icon="search" label="Query..." />
+            </Cell>
+            <Cell cols="1">
+              <TextField id="floating" label="Name" floatingLabel />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="1">
+              <Icon id="tt1">add</Icon>
+              <Tooltip htmlFor="tt1">Follow</Tooltip>
+            </Cell>
+            <Cell cols="1">
+              <Icon id="tt2">print</Icon>
+              <Tooltip htmlFor="tt2" large>Print</Tooltip>
+            </Cell>
+            <Cell cols="1">
+              <Icon id="tt3">cloud_upload</Icon>
+              <Tooltip htmlFor="tt3">
+                Upload <strong>file.zip</strong>
+              </Tooltip>
+            </Cell>
+            <Cell cols="1">
+              <Icon id="tt4">share</Icon>
+              <Tooltip htmlFor="tt4" dangerouslySetInnerHTML={{__html: "Share your content<br />via social media"}} />
             </Cell>
           </Grid>
           <MiniFooter>

@@ -1,7 +1,7 @@
 System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_export) {
   "use strict";
 
-  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, Checkbox, Radio, IconToggle, Switch, Table, TH, TD, TestComponent;
+  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, Checkbox, Radio, IconToggle, Switch, Table, TH, TD, TextField, ExpandingTextField, TextArea, Tooltip, TestComponent;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -69,6 +69,10 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
       Table = _reactMdlReactMdlMinJs.Table;
       TH = _reactMdlReactMdlMinJs.TH;
       TD = _reactMdlReactMdlMinJs.TD;
+      TextField = _reactMdlReactMdlMinJs.TextField;
+      ExpandingTextField = _reactMdlReactMdlMinJs.ExpandingTextField;
+      TextArea = _reactMdlReactMdlMinJs.TextArea;
+      Tooltip = _reactMdlReactMdlMinJs.Tooltip;
     }],
     execute: function () {
       TestComponent = (function (_React$Component) {
@@ -1266,6 +1270,93 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                         )
                       )
                     )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(TextField, { id: "username", label: "User", pattern: "[A-Z,a-z, ]*", error: "Letters and spaces only" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(TextArea, { id: "address", rows: "1", label: "Full address" })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(ExpandingTextField, { id: "search", icon: "search", label: "Query..." })
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(TextField, { id: "floating", label: "Name", floatingLabel: true })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      Icon,
+                      { id: "tt1" },
+                      "add"
+                    ),
+                    React.createElement(
+                      Tooltip,
+                      { htmlFor: "tt1" },
+                      "Follow"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      Icon,
+                      { id: "tt2" },
+                      "print"
+                    ),
+                    React.createElement(
+                      Tooltip,
+                      { htmlFor: "tt2", large: true },
+                      "Print"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      Icon,
+                      { id: "tt3" },
+                      "cloud_upload"
+                    ),
+                    React.createElement(
+                      Tooltip,
+                      { htmlFor: "tt3" },
+                      "Upload ",
+                      React.createElement(
+                        "strong",
+                        null,
+                        "file.zip"
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "1" },
+                    React.createElement(
+                      Icon,
+                      { id: "tt4" },
+                      "share"
+                    ),
+                    React.createElement(Tooltip, { htmlFor: "tt4", dangerouslySetInnerHTML: { __html: "Share your content<br />via social media" } })
                   )
                 ),
                 React.createElement(
