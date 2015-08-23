@@ -1,7 +1,7 @@
 System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_export) {
   "use strict";
 
-  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, Checkbox, Radio, IconToggle, Switch, TestComponent;
+  var React, Layout, LayoutHeader, LayoutHeaderRow, LayoutTitle, Navigation, NavigationLink, LayoutTabBar, LayoutTab, LayoutTabPanel, LayoutDrawer, LayoutContent, LayoutIcon, LayoutSpacer, Grid, Cell, Tabs, TabBar, Tab, TabPanel, MegaFooter, MegaFooterSection, MegaFooterLinkList, MegaFooterSocialButton, MegaFooterHeading, MiniFooter, MiniFooterSection, MiniFooterLinkList, MiniFooterSocialButton, Logo, Component, Button, LinkButton, Icon, Card, CardTitle, CardTitleText, CardSubtitleText, CardMedia, CardSupportingText, CardActions, CardMenu, ProgressBar, Spinner, MenuButton, Menu, MenuItem, Slider, Checkbox, Radio, IconToggle, Switch, Table, TH, TD, TestComponent;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -66,6 +66,9 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
       Radio = _reactMdlReactMdlMinJs.Radio;
       IconToggle = _reactMdlReactMdlMinJs.IconToggle;
       Switch = _reactMdlReactMdlMinJs.Switch;
+      Table = _reactMdlReactMdlMinJs.Table;
+      TH = _reactMdlReactMdlMinJs.TH;
+      TD = _reactMdlReactMdlMinJs.TD;
     }],
     execute: function () {
       TestComponent = (function (_React$Component) {
@@ -1073,6 +1076,103 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                     Cell,
                     { cols: "1" },
                     React.createElement(Switch, { label: "Off", ripple: true })
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "4" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "4" },
+                    React.createElement(
+                      Table,
+                      { selectable: true },
+                      React.createElement(
+                        "thead",
+                        null,
+                        React.createElement(
+                          "tr",
+                          null,
+                          React.createElement(
+                            TH,
+                            null,
+                            "Material"
+                          ),
+                          React.createElement(
+                            TH,
+                            { numeric: true },
+                            "Quantity"
+                          ),
+                          React.createElement(
+                            TH,
+                            { numeric: true },
+                            "Unit Price"
+                          )
+                        )
+                      ),
+                      React.createElement(
+                        "tbody",
+                        null,
+                        React.createElement(
+                          "tr",
+                          null,
+                          React.createElement(
+                            TD,
+                            null,
+                            "Acrylic (transparent)"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "25"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "$2.90"
+                          )
+                        ),
+                        React.createElement(
+                          "tr",
+                          null,
+                          React.createElement(
+                            TD,
+                            null,
+                            "Plywood (birch)"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "50"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "$1.25"
+                          )
+                        ),
+                        React.createElement(
+                          "tr",
+                          null,
+                          React.createElement(
+                            TD,
+                            null,
+                            "Laminate (gold and blue)"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "10"
+                          ),
+                          React.createElement(
+                            TD,
+                            { numeric: true },
+                            "$2.35"
+                          )
+                        )
+                      )
+                    )
                   )
                 ),
                 React.createElement(

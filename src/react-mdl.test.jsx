@@ -59,7 +59,11 @@ import {
   Checkbox,
   Radio,
   IconToggle,
-  Switch
+  Switch,
+
+  Table,
+  TH,
+  TD
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
@@ -474,6 +478,37 @@ class TestComponent extends React.Component {
             </Cell>
             <Cell cols="1">
               <Switch label="Off" ripple />
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="4" />
+            <Cell cols="4">
+              <Table selectable>
+                <thead>
+                  <tr>
+                    <TH>Material</TH>
+                    <TH numeric>Quantity</TH>
+                    <TH numeric>Unit Price</TH>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <TD>Acrylic (transparent)</TD>
+                    <TD numeric>25</TD>
+                    <TD numeric>$2.90</TD>
+                  </tr>
+                  <tr>
+                    <TD>Plywood (birch)</TD>
+                    <TD numeric>50</TD>
+                    <TD numeric>$1.25</TD>
+                  </tr>
+                  <tr>
+                    <TD>Laminate (gold and blue)</TD>
+                    <TD numeric>10</TD>
+                    <TD numeric>$2.35</TD>
+                  </tr>
+                </tbody>
+              </Table>
             </Cell>
           </Grid>
           <MiniFooter>

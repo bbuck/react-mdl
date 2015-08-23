@@ -1114,6 +1114,90 @@ export class Switch extends Component {
   }
 }
 
+// ***************************************************************************
+// Tables
+// ***************************************************************************
+
+export class Table extends BaseComponent {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["selectable"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-data-table", "mdl-js-data-table");
+
+    if (this.props.selectable) {
+      props.className.push("mdl-data-table--selectable");
+    }
+
+    return props;
+  }
+
+  render() {
+    return (
+      <table {...this.getRenderProperties()}>
+        {this.props.children}
+      </table>
+    );
+  }
+}
+
+export class TH extends Component {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["numeric"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+
+    if (!this.props.numeric) {
+      props.className.push("mdl-data-table__cell--non-numeric");
+    }
+
+    return props;
+  }
+
+  render() {
+    return (
+      <th {...this.getRenderProperties()}>
+        {this.props.children}
+      </th>
+    );
+  }
+}
+
+export class TD extends TH {
+  render() {
+    return (
+      <td {...this.getRenderProperties()}>
+        {this.props.children}
+      </td>
+    );
+  }
+}
+
+// ***************************************************************************
+// Text Fields
+// ***************************************************************************
+
+export class TextField extends BaseComponent {
+  getExcludedProperties() {
+    return super.getExcludedProperties().concat(["id", "name"]);
+  }
+
+  getElementProperties() {
+    let props = super.getElementProperties();
+    props.className.push("mdl-textfield", "mdl-js-textfield");
+
+    return props;
+  }
+}
+
+// ***************************************************************************
+// Tables
+// ***************************************************************************
+
   // getElementProperties() {
   //   let props = super.getElementProperties();
   //   props.className.push("");
