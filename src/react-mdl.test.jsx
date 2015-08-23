@@ -113,6 +113,42 @@ class TestComponent extends React.Component {
             </Cell>
           </Grid>
           <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="4">Display 4</Component>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="3">Display 3</Component>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="2">Display 2</Component>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="1">Display 1</Component>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="headline">Display headline</Component>
+            </Cell>
+          </Grid>
+          <Grid>
+            <Cell cols="2" />
+            <Cell cols="6">
+              <Component display="title">Display title</Component>
+            </Cell>
+          </Grid>
+          <Grid>
             <Cell cols="1" middle>
               <Button>Click Me</Button>
             </Cell>

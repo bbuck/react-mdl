@@ -189,6 +189,90 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                 React.createElement(
                   Grid,
                   null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "4" },
+                      "Display 4"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "3" },
+                      "Display 3"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "2" },
+                      "Display 2"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "1" },
+                      "Display 1"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "headline" },
+                      "Display headline"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
+                  React.createElement(Cell, { cols: "2" }),
+                  React.createElement(
+                    Cell,
+                    { cols: "6" },
+                    React.createElement(
+                      Component,
+                      { display: "title" },
+                      "Display title"
+                    )
+                  )
+                ),
+                React.createElement(
+                  Grid,
+                  null,
                   React.createElement(
                     Cell,
                     { cols: "1", middle: true },

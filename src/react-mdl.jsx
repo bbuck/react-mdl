@@ -56,7 +56,7 @@ class BaseComponent extends React.Component {
 
 export class Component extends BaseComponent {
   getExcludedProperties() {
-    return ["badge"];
+    return super.getExcludedProperties().concat(["badge", "display", "transparentBadge"]);
   }
 
   getElementProperties() {
@@ -68,6 +68,14 @@ export class Component extends BaseComponent {
 
       if (this.props.transparentBadge) {
         props.className.push("mdl-badge--no-background");
+      }
+    }
+
+    if (this.props.display) {
+      if (["headline", "title"].indexOf(this.props.display) >= 0) {
+        props.className.push(`mdl-typography--${this.props.display}`);
+      } else {
+        props.className.push(`mdl-typography--display-${this.props.display}`);
       }
     }
 
@@ -980,7 +988,7 @@ export class Slider extends BaseComponent {
 
 export class Checkbox extends Component {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "ripple", "label", "checked", "onChange", "defaultChecked"]);
+    return super.getExcludedProperties().concat(["id", "name", "ripple", "label", "checked", "onChange", "defaultChecked"]);
   }
 
   getElementProperties() {
@@ -996,7 +1004,8 @@ export class Checkbox extends Component {
 
   render() {
     let inputProps = {
-      onChange: this.props.onChange
+      onChange: this.props.onChange,
+      name: this.props.name
     };
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
@@ -1049,7 +1058,7 @@ export class Radio extends Component {
 
 export class IconToggle extends Component {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "ripple", "onChange", "checked", "defaultChecked"]);
+    return super.getExcludedProperties().concat(["id", "name", "ripple", "onChange", "checked", "defaultChecked"]);
   }
 
   getElementProperties() {
@@ -1066,7 +1075,8 @@ export class IconToggle extends Component {
   render() {
     let inputProps = {
       onChange: this.props.onChange,
-      id: this.props.id
+      id: this.props.id,
+      name: this.props.name
     };
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
@@ -1083,7 +1093,7 @@ export class IconToggle extends Component {
 
 export class Switch extends Component {
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["id", "checked", "defaltChecked", "label", "ripple", "onChange"]);
+    return super.getExcludedProperties().concat(["id", "name", "checked", "defaltChecked", "label", "ripple", "onChange"]);
   }
 
   getElementProperties() {
@@ -1099,7 +1109,8 @@ export class Switch extends Component {
 
   render() {
     let inputProps = {
-      id: this.props.id
+      id: this.props.id,
+      name: this.props.name
     };
     if (this.props.checked || this.props.defaultChecked) {
       inputProps.defaultChecked = true;
