@@ -108,8 +108,11 @@ class TestComponent extends React.Component {
         </LayoutDrawer>
         <LayoutContent>
           <Grid>
-            <Cell cols="12">
+            <Cell cols="2">
               <Icon badge="10">account_box</Icon>
+            </Cell>
+            <Cell cols="2">
+              <Icon badge="10" transparentBadge>account_box</Icon>
             </Cell>
           </Grid>
           <Grid>

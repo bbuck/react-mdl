@@ -178,10 +178,19 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                   null,
                   React.createElement(
                     Cell,
-                    { cols: "12" },
+                    { cols: "2" },
                     React.createElement(
                       Icon,
                       { badge: "10" },
+                      "account_box"
+                    )
+                  ),
+                  React.createElement(
+                    Cell,
+                    { cols: "2" },
+                    React.createElement(
+                      Icon,
+                      { badge: "10", transparentBadge: true },
                       "account_box"
                     )
                   )
