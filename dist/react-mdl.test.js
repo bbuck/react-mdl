@@ -901,113 +901,117 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                     Cell,
                     { cols: "4" },
                     React.createElement(
-                      Tabs,
-                      null,
+                      "div",
+                      { style: { display: "inline-block" } },
                       React.createElement(
-                        TabBar,
-                        null,
+                        Tabs,
+                        { ripple: true },
                         React.createElement(
-                          Tab,
-                          { href: "#starks-panel", active: true },
-                          "Starks"
+                          TabBar,
+                          null,
+                          React.createElement(
+                            Tab,
+                            { href: "#starks-panel", active: true },
+                            "Starks"
+                          ),
+                          React.createElement(
+                            Tab,
+                            { href: "#lannisters-panel" },
+                            "Lannisters"
+                          ),
+                          React.createElement(
+                            Tab,
+                            { href: "#targaryens-panel" },
+                            "Targaryens"
+                          )
                         ),
                         React.createElement(
-                          Tab,
-                          { href: "#lannisters-panel" },
-                          "Lannisters"
+                          TabPanel,
+                          { id: "starks-panel", active: true },
+                          React.createElement(
+                            "ul",
+                            { style: { listStyle: "none" } },
+                            React.createElement(
+                              "li",
+                              null,
+                              "Eddard"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Catelyn"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Robb"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Sansa"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Brandon"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Arya"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Rickon"
+                            )
+                          )
                         ),
                         React.createElement(
-                          Tab,
-                          { href: "#targaryens-panel" },
-                          "Targaryens"
-                        )
-                      ),
-                      React.createElement(
-                        TabPanel,
-                        { id: "starks-panel", active: true },
-                        React.createElement(
-                          "ul",
-                          null,
+                          TabPanel,
+                          { id: "lannisters-panel" },
                           React.createElement(
-                            "li",
-                            null,
-                            "Eddard"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Catelyn"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Robb"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Sansa"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Brandon"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Arya"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Rickon"
+                            "ul",
+                            { style: { listStyle: "none" } },
+                            React.createElement(
+                              "li",
+                              null,
+                              "Tywin"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Cersei"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Jamie"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Tyrion"
+                            )
                           )
-                        )
-                      ),
-                      React.createElement(
-                        TabPanel,
-                        { id: "lannisters-panel" },
+                        ),
                         React.createElement(
-                          "ul",
-                          null,
+                          TabPanel,
+                          { id: "targaryens-panel" },
                           React.createElement(
-                            "li",
-                            null,
-                            "Tywin"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Cersei"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Jamie"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Tyrion"
-                          )
-                        )
-                      ),
-                      React.createElement(
-                        TabPanel,
-                        { id: "targaryens-panel" },
-                        React.createElement(
-                          "ul",
-                          null,
-                          React.createElement(
-                            "li",
-                            null,
-                            "Viserys"
-                          ),
-                          React.createElement(
-                            "li",
-                            null,
-                            "Daenerys"
+                            "ul",
+                            { style: { listStyle: "none" } },
+                            React.createElement(
+                              "li",
+                              null,
+                              "Viserys"
+                            ),
+                            React.createElement(
+                              "li",
+                              null,
+                              "Daenerys"
+                            )
                           )
                         )
                       )
