@@ -632,7 +632,12 @@ export class CardMenu extends UpgradingCardComponent {
 // Tabs
 // ***************************************************************************
 
-export class Tabs extends UpgradingBaseComponent {
+export class Tabs extends BaseComponent {
+  componentDidMount() {
+    var domEl = React.findDOMNode(this);
+    componentHandler.upgradeElements(domEl);
+  }
+
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["ripple"]);
   }
