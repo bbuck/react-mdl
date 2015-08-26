@@ -404,38 +404,40 @@ class TestComponent extends React.Component {
           <Grid>
             <Cell cols="4" />
             <Cell cols="4">
-              <Tabs>
-                <TabBar>
-                  <Tab href="#starks-panel" active>Starks</Tab>
-                  <Tab href="#lannisters-panel">Lannisters</Tab>
-                  <Tab href="#targaryens-panel">Targaryens</Tab>
-                </TabBar>
-                <TabPanel id="starks-panel" active>
-                  <ul>
-                    <li>Eddard</li>
-                    <li>Catelyn</li>
-                    <li>Robb</li>
-                    <li>Sansa</li>
-                    <li>Brandon</li>
-                    <li>Arya</li>
-                    <li>Rickon</li>
-                  </ul>
-                </TabPanel>
-                <TabPanel id="lannisters-panel">
-                  <ul>
-                    <li>Tywin</li>
-                    <li>Cersei</li>
-                    <li>Jamie</li>
-                    <li>Tyrion</li>
-                  </ul>
-                </TabPanel>
-                <TabPanel id="targaryens-panel">
-                  <ul>
-                    <li>Viserys</li>
-                    <li>Daenerys</li>
-                  </ul>
-                </TabPanel>
-              </Tabs>
+              <div style={{display: "inline-block"}}>
+                <Tabs ripple>
+                  <TabBar>
+                    <Tab href="#starks-panel" active>Starks</Tab>
+                    <Tab href="#lannisters-panel">Lannisters</Tab>
+                    <Tab href="#targaryens-panel">Targaryens</Tab>
+                  </TabBar>
+                  <TabPanel id="starks-panel" active>
+                    <ul style={{listStyle: "none"}}>
+                      <li>Eddard</li>
+                      <li>Catelyn</li>
+                      <li>Robb</li>
+                      <li>Sansa</li>
+                      <li>Brandon</li>
+                      <li>Arya</li>
+                      <li>Rickon</li>
+                    </ul>
+                  </TabPanel>
+                  <TabPanel id="lannisters-panel">
+                    <ul style={{listStyle: "none"}}>
+                      <li>Tywin</li>
+                      <li>Cersei</li>
+                      <li>Jamie</li>
+                      <li>Tyrion</li>
+                    </ul>
+                  </TabPanel>
+                  <TabPanel id="targaryens-panel">
+                    <ul style={{listStyle: "none"}}>
+                      <li>Viserys</li>
+                      <li>Daenerys</li>
+                    </ul>
+                  </TabPanel>
+                </Tabs>
+              </div>
             </Cell>
           </Grid>
           <Grid>
