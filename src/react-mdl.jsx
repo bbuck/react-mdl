@@ -11,17 +11,6 @@ const EventNames = [
   "onError"
 ];
 
-// const componentHandlerDefined = window.componentHandler && window.componentHandler && typeof window.componentHandler.upgradeElement === "function",
-//       componentHandler = window.componentHandler;
-//
-// function upgradeMaterialComponents() {
-//   if (componentHandlerDefined) {
-//     componentHandler.upgradeDom();
-//   }
-// }
-//
-// setInterval(upgradeMaterialComponents, 1000);
-
 // ***************************************************************************
 // Base Components
 // ***************************************************************************
@@ -125,7 +114,7 @@ export class Icon extends Component {
   }
 }
 
-class BaseInputWrapper extends Component {
+class BaseInputWrapper extends UpgradingComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(EventNames.concat(["disabled"]));
   }
@@ -905,9 +894,28 @@ export class MiniFooterSocialButton extends Component {
 // Progress
 // ***************************************************************************
 
-export class ProgressBar extends BaseComponent {
+export class ProgressBar extends UpgradingBaseComponent {
+  componentDidMount() {
+    super.componentDidMount();
+
+    var domEl = React.findDOMNode(this);
+    if (domEl.MaterialProgress) {
+      if (this.props.progress) {
+        domEl.MaterialProgress.setProgress(parseFloat(this.props.progress));
+      }
+
+      if (this.props.buffer) {
+        domEl.MaterialProgress.setBuffer(parseFloat(this.props.buffer));
+      }
+    } else {
+      if (console && console.warn && typeof console.warn === "function") {
+        console.warn("ProgressBar was not properly upgraded to MaterialProgress");
+      }
+    }
+  }
+
   getExcludedProperties() {
-    return super.getExcludedProperties().concat(["indeterminate"]);
+    return super.getExcludedProperties().concat(["indeterminate", "progress", "buffer"]);
   }
 
   getElementProperties() {
@@ -922,7 +930,7 @@ export class ProgressBar extends BaseComponent {
   }
 }
 
-export class Spinner extends BaseComponent {
+export class Spinner extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["singleColor", "active"]);
   }
@@ -964,7 +972,7 @@ export class MenuButton extends Button {
   }
 }
 
-export class Menu extends BaseComponent {
+export class Menu extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["ripple", "topLeft", "topRight", "bottomLeft", "bottomRight"]);
   }
@@ -1022,7 +1030,7 @@ export class MenuItem extends Component {
 // Slider
 // ***************************************************************************
 
-export class Slider extends BaseComponent {
+export class Slider extends UpgradingBaseComponent {
   getElementProperties() {
     let props = super.getElementProperties();
     props.className.push("mdl-slider", "mdl-js-slider");
@@ -1168,7 +1176,7 @@ export class Switch extends BaseInputWrapper {
 // Tables
 // ***************************************************************************
 
-export class Table extends BaseComponent {
+export class Table extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["selectable"]);
   }
@@ -1313,7 +1321,7 @@ export class TextArea extends TextField {
 // Tooltip
 // ***************************************************************************
 
-export class Tooltip extends BaseComponent {
+export class Tooltip extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["large"]);
   }

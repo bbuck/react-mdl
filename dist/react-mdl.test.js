@@ -85,18 +85,6 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
         }
 
         _createClass(TestComponent, [{
-          key: "componentDidMount",
-          value: function componentDidMount() {
-            document.querySelector("#prog1").addEventListener("mdl-componentupgraded", function () {
-              this.MaterialProgress.setProgress(44);
-            });
-
-            document.querySelector("#prog3").addEventListener("mdl-componentupgraded", function () {
-              this.MaterialProgress.setProgress(33);
-              this.MaterialProgress.setBuffer(57);
-            });
-          }
-        }, {
           key: "sliderChange",
           value: function sliderChange(e) {
             console.log(e.target.value);
@@ -1024,17 +1012,17 @@ System.register(["react/react.js", "react-mdl/react-mdl.min.js"], function (_exp
                   React.createElement(
                     Cell,
                     { cols: "4" },
-                    React.createElement(ProgressBar, { id: "prog1" })
+                    React.createElement(ProgressBar, { progress: "44" })
                   ),
                   React.createElement(
                     Cell,
                     { cols: "4" },
-                    React.createElement(ProgressBar, { id: "prog2", indeterminate: true })
+                    React.createElement(ProgressBar, { indeterminate: true })
                   ),
                   React.createElement(
                     Cell,
                     { cols: "4" },
-                    React.createElement(ProgressBar, { id: "prog3" })
+                    React.createElement(ProgressBar, { progress: "22", buffer: "57" })
                   )
                 ),
                 React.createElement(

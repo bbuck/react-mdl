@@ -73,17 +73,6 @@ import {
 } from "react-mdl/react-mdl.min.js";
 
 class TestComponent extends React.Component {
-  componentDidMount() {
-    document.querySelector("#prog1").addEventListener("mdl-componentupgraded", function() {
-      this.MaterialProgress.setProgress(44);
-    });
-
-    document.querySelector("#prog3").addEventListener("mdl-componentupgraded", function() {
-      this.MaterialProgress.setProgress(33);
-      this.MaterialProgress.setBuffer(57);
-    })
-  }
-
   sliderChange(e) {
     console.log(e.target.value);
   }
@@ -442,13 +431,13 @@ class TestComponent extends React.Component {
           </Grid>
           <Grid>
             <Cell cols="4">
-              <ProgressBar id="prog1" />
+              <ProgressBar progress="44" />
             </Cell>
             <Cell cols="4">
-              <ProgressBar id="prog2" indeterminate />
+              <ProgressBar indeterminate />
             </Cell>
             <Cell cols="4">
-              <ProgressBar id="prog3" />
+              <ProgressBar progress="22" buffer="57" />
             </Cell>
           </Grid>
           <Grid>
