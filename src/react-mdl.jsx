@@ -50,7 +50,7 @@ class BaseComponent extends React.Component {
       <div {...this.getRenderProperties()}>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
