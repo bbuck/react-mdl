@@ -11,16 +11,16 @@ const EventNames = [
   "onError"
 ];
 
-const componentHandlerDefined = window.componentHandler && window.componentHandler && typeof window.componentHandler.upgradeElement === "function",
-      componentHandler = window.componentHandler;
-
-function upgradeMaterialComponents() {
-  if (componentHandlerDefined) {
-    componentHandler.upgradeDom();
-  }
-}
-
-setInterval(upgradeMaterialComponents, 1000);
+// const componentHandlerDefined = window.componentHandler && window.componentHandler && typeof window.componentHandler.upgradeElement === "function",
+//       componentHandler = window.componentHandler;
+//
+// function upgradeMaterialComponents() {
+//   if (componentHandlerDefined) {
+//     componentHandler.upgradeDom();
+//   }
+// }
+//
+// setInterval(upgradeMaterialComponents, 1000);
 
 // ***************************************************************************
 // Base Components
@@ -65,6 +65,14 @@ class BaseComponent extends React.Component {
   }
 }
 
+class UpgradingBaseComponent extends BaseComponent {
+  componentDidMount() {
+    if (componentHandler && componentHandler.upgradeElement) {
+      componentHandler.upgradeElement(React.findDOMNode(this));
+    }
+  }
+}
+
 export class Component extends BaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["badge", "display", "transparentBadge"]);
@@ -91,6 +99,14 @@ export class Component extends BaseComponent {
     }
 
     return props;
+  }
+}
+
+class UpgradingComponent extends Component {
+  componentDidMount() {
+    if (componentHandler && componentHandler.upgradeElement) {
+      componentHandler.upgradeElement(React.findDOMNode(this));
+    }
   }
 }
 
@@ -132,7 +148,7 @@ class BaseInputWrapper extends Component {
 // Layout Components
 // ***************************************************************************
 
-export class Layout extends BaseComponent {
+export class Layout extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["fixedDrawer", "fixedHeader", "fixedTabs"]);
   }
@@ -423,7 +439,7 @@ Cell.ClassMapping = {
 // Usability/Control Components
 // ***************************************************************************
 
-export class Button extends Component {
+export class Button extends UpgradingComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["raised", "fab", "miniFab", "icon", "colored", "primary", "accent", "ripple"]);
   }
@@ -496,7 +512,7 @@ export class LabelButton extends Button {
 // Card Components
 // ***************************************************************************
 
-export class Card extends Component {
+export class Card extends BaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["shadow"])
   }
@@ -528,6 +544,14 @@ class CardComponent extends BaseComponent {
     })
 
     return props;
+  }
+}
+
+class UpgradingCardComponent extends CardComponent {
+  componentDidMount() {
+    if (componentHandler && componentHandler.upgradeElement) {
+      componentHandler.upgradeElement(React.findDOMNode(this));
+    }
   }
 }
 
@@ -606,7 +630,7 @@ export class CardActions extends CardComponent {
   }
 }
 
-export class CardMenu extends CardComponent {
+export class CardMenu extends UpgradingCardComponent {
   getElementProperties() {
     let props = super.getElementProperties();
     props.className.push("mdl-card__menu");
@@ -619,7 +643,7 @@ export class CardMenu extends CardComponent {
 // Tabs
 // ***************************************************************************
 
-export class Tabs extends BaseComponent {
+export class Tabs extends UpgradingBaseComponent {
   getExcludedProperties() {
     return super.getExcludedProperties().concat(["ripple"]);
   }
